@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> New Tab </title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+        h2{
+            margin-left: 25px;
+        }
+
+        #first{
+            border:2px solid rgb(255, 255, 255);
+            height: 400px;
+            width: 500px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+        }
+        #second{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 25px;
+            background: #edeef0;
+            border-radius: 20px;
+            width: 450px;
+        }
+        input{
+            flex: 1;
+            border:none;
+            outline: none;
+            background: transparent;
+            padding: 13px;
+            font-size: 15px;
+        }
+        button{
+            border:none;
+            outline: none;
+            padding: 13px 30px;
+            font-size: 15px;
+            border-radius: 20px;
+            color: white;
+            background-color: orangered;
+            cursor: pointer;
+        }
+        #look{
+            height:20px;
+            width: 20px;
+        }
+        ul li {
+            position: relative;
+            list-style-type: none;
+            margin-bottom: 10px;
+        }
+        ul li span{
+            position:absolute;
+            right: 30px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            font-size: 26px;
+            color: black;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        ul li span:hover{
+            background: grey;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">
+        <h2> TO-Do List  </h2> 
+        <div id="second">
+            <input type="text" id="box" placeholder="Add your text">
+            <button onclick ="addtask()"> <b> Add </b> </button>
+        </div>
+        <ul id="list"></ul>
+    </div>  
+    
+    
+    <script> 
+        const a = document.getElementById("box");
+        const b = document.getElementById("list");
+        function addtask(){
+            if(a.value === ''){
+                alert("you must write something!");
+            } else {
+                let li = document.createElement("li");
+                li.innerHTML = a.value;
+                b.appendChild(li);
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span);
+                span.onclick = function() {
+                    li.remove();
+                };
+            }
+            a.value = "";
+        }
+    </script>
+</body>
+</html>
